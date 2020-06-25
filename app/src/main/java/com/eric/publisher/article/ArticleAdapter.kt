@@ -1,4 +1,4 @@
-package com.eric.publisher
+package com.eric.publisher.article
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eric.publisher.data.Article
 import com.eric.publisher.databinding.ItemMainBinding
 
-class MainAdapter  : androidx.recyclerview.widget.ListAdapter<Article,
-        MainAdapter.ArticleViewHolder>(
+class ArticleAdapter  : androidx.recyclerview.widget.ListAdapter<Article,
+        ArticleAdapter.ArticleViewHolder>(
     DiffCallback
 ) {
 

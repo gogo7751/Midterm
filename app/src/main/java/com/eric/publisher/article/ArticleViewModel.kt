@@ -1,16 +1,20 @@
-package com.eric.publisher
+package com.eric.publisher.article
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.eric.publisher.data.Article
 import com.eric.publisher.data.TimeUtil
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.util.*
 
-class MainViewModel: ViewModel() {
+class ArticleViewModel: ViewModel() {
+    private val _allArticle = MutableLiveData<List<Article>>()
 
-    val allArticle = MutableLiveData<List<Article>>()
+    val allArticle: LiveData<List<Article>>
+        get() = _allArticle
 
     val author = MutableLiveData<String>()
     val title = MutableLiveData<String>()
@@ -19,7 +23,8 @@ class MainViewModel: ViewModel() {
     val createdTime = MutableLiveData<Long>()
     val id = MutableLiveData<String>()
 
-    val articles = FirebaseFirestore.getInstance()
+
+    private val articles = FirebaseFirestore.getInstance()
         .collection("articles")
 
 
@@ -42,10 +47,11 @@ class MainViewModel: ViewModel() {
     }
 
 
-    fun getData(){
+    private fun getData(){
         val articles = FirebaseFirestore.getInstance()
             .collection("articles")
-        articles.get()
+        articles.orderBy("createdTime", Query.Direction.DESCENDING)
+            .get()
             .addOnSuccessListener { result ->
                 val listArticle = mutableListOf<Article>()
                 for (document in result) {
@@ -58,25 +64,14 @@ class MainViewModel: ViewModel() {
                         tag = document.getString("tag")
                     )
                     listArticle.add(article)
-//                    author.value = document.getString("author.name")
-//                    title.value = document.getString("title")
-//                    content.value = document.getString("content")
-//                    createdTime.value = document.getLong("createdTime")
-//                    tag.value = document.getString("tag")
-//                    id.value = document.id
-//                    Log.d("read" , "id:${id.value}" + "author:${author.value} + title:${title.value} + content:${content.value} + createdTime:$createdTime + tag:${tag.value}")
                 }
-                allArticle.value = listArticle
+                _allArticle.value = listArticle
                 Log.d("read", "${allArticle.value}")
 
             }
     }
 
-
-
     init {
         getData()
     }
-
-
 }

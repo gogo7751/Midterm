@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/articleFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.eric.publisher.MainActivity"
+        android:label="MainActivity"
+        tools:layout="@layout/activity_main" />
+
+    <dialog
+        android:id="@+id/postDialog"
+        android:name="com.eric.publisher.post.PostDialog"
+        android:label="PostDialog"
+        tools:layout="@layout/dialog_post">
+        <action
+            android:id="@+id/action_postDialog_to_articleFragment"
+            app:destination="@id/articleFragment"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.eric.publisher.article.ArticleFragment"
+        android:label="ArticleFragment" >
+        <action
+            android:id="@+id/action_articleFragment_to_postDialog"
+            app:destination="@id/postDialog" />
+    </fragment>
+</navigation>

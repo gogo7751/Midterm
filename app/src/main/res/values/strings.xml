@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post">PO文</string>
+    <string name="author">作者：</string>
+    <string name="time">時間：</string>
+    <string name="hint_content">輸入內容</string>
+    <string name="hint_tag">輸入Tag</string>
+    <string name="hint_title">標題</string>
 </resources>

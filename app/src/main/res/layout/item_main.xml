@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             style="@style/article_text"
-            android:text="作者："
+            android:text="@string/author"
             app:layout_constraintStart_toStartOf="@id/text_title"
             app:layout_constraintTop_toBottomOf="@id/text_title" />
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/article_text"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:text="@{article.author}"
             app:layout_constraintStart_toEndOf="@id/text_author_name"
             app:layout_constraintTop_toTopOf="@id/text_author_name"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             style="@style/article_text"
-            android:text="時間："
+            android:text="@string/time"
             app:layout_constraintStart_toStartOf="@id/text_title"
             app:layout_constraintTop_toBottomOf="@id/text_author_name" />
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/article_text"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:text="@{article.createdTime}"
             app:layout_constraintStart_toEndOf="@id/text_time"
             app:layout_constraintTop_toTopOf="@id/text_time"
