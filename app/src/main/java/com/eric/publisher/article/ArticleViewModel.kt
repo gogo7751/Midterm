@@ -10,23 +10,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.*
 
-class ArticleViewModel: ViewModel() {
+class ArticleViewModel : ViewModel() {
+
     private val _allArticle = MutableLiveData<List<Article>>()
 
     val allArticle: LiveData<List<Article>>
         get() = _allArticle
 
-    val author = MutableLiveData<String>()
-    val title = MutableLiveData<String>()
-    val content = MutableLiveData<String>()
-    val tag = MutableLiveData<String>()
-    val createdTime = MutableLiveData<Long>()
-    val id = MutableLiveData<String>()
-
-
     private val articles = FirebaseFirestore.getInstance()
         .collection("articles")
-
 
     fun addData() {
         val document = articles.document()
@@ -46,8 +38,7 @@ class ArticleViewModel: ViewModel() {
         document.set(data)
     }
 
-
-    private fun getData(){
+    private fun getData() {
         val articles = FirebaseFirestore.getInstance()
             .collection("articles")
         articles.orderBy("createdTime", Query.Direction.DESCENDING)
@@ -67,7 +58,6 @@ class ArticleViewModel: ViewModel() {
                 }
                 _allArticle.value = listArticle
                 Log.d("read", "${allArticle.value}")
-
             }
     }
 

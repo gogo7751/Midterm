@@ -6,13 +6,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
 class PostViewModel: ViewModel() {
+
     val title = MutableLiveData<String>()
     val tag = MutableLiveData<String>()
     val content = MutableLiveData<String>()
 
     private val articles = FirebaseFirestore.getInstance()
         .collection("articles")
-
 
     fun addData() {
         val document = articles.document()
@@ -31,7 +31,4 @@ class PostViewModel: ViewModel() {
         )
         document.set(data)
     }
-
-
-
 }

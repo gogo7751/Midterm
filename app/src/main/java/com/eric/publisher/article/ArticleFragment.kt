@@ -26,9 +26,8 @@ class ArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = FragmentArticleBinding.inflate(inflater, container, false)
-
-
+        val binding = FragmentArticleBinding.inflate(inflater, container,
+            false)
 
         val adapter = ArticleAdapter()
         binding.recyclerviewArticle.adapter = adapter
@@ -39,14 +38,10 @@ class ArticleFragment : Fragment() {
             }
         })
 
-
+        //跳轉post dialog
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_articleFragment_to_postDialog)
         }
-
-
-
-
 
         return binding.root
     }

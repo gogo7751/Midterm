@@ -17,11 +17,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.lifecycleOwner = this
 
-
         navController = Navigation.findNavController(this, R.id.myNavHostFragment)
-
-
-
 
     }
 }
